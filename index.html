@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+    <title>LP_SENAC</title>
+  </head>
+  <body class="bg-light">
+    <div class="container">
+      <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5">
+          <div class="container-fluid">
+            <h1 class="navbar-brand mt-1">Estoque</h1>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link active" onclick="listar()" aria-current="page" href="#">Listar Produtos</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" onclick="listarMarca()" href="#">Pesquisar por marca</a>
+                </li>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Pesquisar por preço</a>
+              </li>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Estatísticas do estoque</a>
+            </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </header>
+      <form class="row g-3 needs-validation mb-5" >
+        <h1>Cadastro de produtos</h1>
+        <div class="col-md-4">
+          <label class="form-label">Informe a marca</label>
+          <input type="text" class="form-control" id="marca" placeholder="marca" >
+        </div>
+        <div class="col-md-4">
+          <label for="validationCustom02" class="form-label">Informe o modelo</label>
+          <input type="text" class="form-control" id="modelo" placeholder="modelo">
+        </div>
+        <div class="col-md-4">
+          <label for="validationCustomUsername" class="form-label">Informe o valor</label>
+          <div class="input-group has-validation">
+            <span class="input-group-text" id="inputGroupPrepend">R$</span>
+            <input type="text" class="form-control" id="preco">
+          </div>
+        </div>
+        <div class="col-12 d-flex justify-content-end">
+          <button class="btn btn-dark" type="submit">Cadastrar produto</button>
+        </div>
+      </form>
+    <div class="list">
+        <table class="table table-dark table-hover">
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Marca</th>
+                <th scope="col">Modelo</th>
+                <th scope="col">Preço</th>
+            </tr>
+            </thead>
+            <tbody id="tBody">
+            
+            </tbody>
+        </table>
+    </div>
+    <script src="js/scripts.js"></script>
+  </body>
+</html>

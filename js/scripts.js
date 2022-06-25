@@ -5,6 +5,7 @@ const modelo = [];
 const preco = [];
 
 form.addEventListener("submit", (e) => {
+  e.preventDefault()
   marca.push(form.marca.value)
   modelo.push(form.modelo.value)
   preco.push(form.preco.value)

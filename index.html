@@ -24,33 +24,36 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                  <a class="nav-link active" onclick="listar()" aria-current="page" href="#">Listar Produtos</a>
+                  <a class="nav-link active" onclick="listar()" aria-current="page" href="#">Listar Jogos</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" onclick="listarMarca()" href="#">Pesquisar por marca</a>
+                  <a class="nav-link" onclick="listarConsole()" href="#">Pesquisar por console</a>
                 </li>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Pesquisar por preço</a>
+                <a class="nav-link" onclick="listarPreco()" href="#">Pesquisar por preço</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" onclick="excluirJogo()" href="#">Excluir Jogo</a>
               </li>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Estatísticas do estoque</a>
+              <a class="nav-link" onclick="estatisticas()" href="#">Estatísticas do estoque</a>
             </li>
               </ul>
             </div>
           </div>
         </nav>
       </header>
-      <form class="row g-3 needs-validation mb-5" >
-        <h1>Cadastro de produtos</h1>
+      <form class="row g-3 needs-validation mb-5">
+        <h1>Cadastro de Jogos</h1>
         <div class="col-md-4">
-          <label class="form-label">Informe a marca</label>
-          <input type="text" class="form-control" id="marca" placeholder="marca" >
+          <label class="form-label">Informe o Título</label>
+          <input type="text" class="form-control" id="titulo" placeholder="jogo" required autofocus>
         </div>
         <div class="col-md-4">
-          <label for="validationCustom02" class="form-label">Informe o modelo</label>
-          <input type="text" class="form-control" id="modelo" placeholder="modelo">
+          <label for="validationCustom02" class="form-label">Informe o console</label>
+          <input type="text" class="form-control" id="console" placeholder="console">
         </div>
         <div class="col-md-4">
           <label for="validationCustomUsername" class="form-label">Informe o valor</label>
@@ -60,7 +63,7 @@
           </div>
         </div>
         <div class="col-12 d-flex justify-content-end">
-          <button class="btn btn-dark" type="submit">Cadastrar produto</button>
+          <button class="btn btn-dark"  type="submit">Cadastrar Jogo</button>
         </div>
       </form>
     <div class="list">
@@ -68,16 +71,16 @@
             <thead>
             <tr>
                 <th scope="col">ID</th>
-                <th scope="col">Marca</th>
-                <th scope="col">Modelo</th>
+                <th scope="col">Jogo</th>
+                <th scope="col">Console</th>
                 <th scope="col">Preço</th>
             </tr>
             </thead>
-            <tbody id="tBody">
-            
-            </tbody>
+            <tbody id="tBody"></tbody>
         </table>
     </div>
-    <script src="js/scripts.js"></script>
+    
+    
+    <script src="./js/scripts.js"></script>
   </body>
 </html>

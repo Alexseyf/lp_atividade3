@@ -1,73 +1,146 @@
-const form = document.querySelector("form")
+const form = document.querySelector("form");
 
-const marca = [];
-const modelo = [];
+const titulo = [];
+const console = [];
 const preco = [];
 
 form.addEventListener("submit", (e) => {
-  e.preventDefault()
-  marca.push(form.marca.value)
-  modelo.push(form.modelo.value)
-  preco.push(form.preco.value)
-  alert("Produto cadastrado com sucesso!")
-  form.reset()
-})
+  e.preventDefault();
+  titulo.push(form.titulo.value);
+  console.push(form.console.value);
+  const valor = Number(form.preco.value);
+  preco.push(valor);
+  alert("Produto cadastrado com sucesso!");
+  form.reset();
+  listar();
+});
 
 function listar() {
-  let tBody = document.getElementById('tBody');
+  let tBody = document.getElementById("tBody");
   tBody.innerText = "";
 
-  for (let i = 0; i < marca.length; i++){
-    let tr = tBody.insertRow()
+  for (let i = 0; i < titulo.length; i++) {
+    let tr = tBody.insertRow();
 
     let td_id = tr.insertCell();
-    let td_marca = tr.insertCell();
-    let td_modelo = tr.insertCell();
+    let td_titulo = tr.insertCell();
+    let td_console = tr.insertCell();
     let td_preco = tr.insertCell();
 
-    td_id.innerText = i+1
-    td_marca.innerText = marca[i]
-    td_modelo.innerText = modelo[i]
-    td_preco.innerText = preco[i]
+    td_id.innerText = i + 1;
+    td_titulo.innerText = titulo[i];
+    td_console.innerText = console[i];
+    td_preco.innerText = preco[i].toLocaleString("pt-br", {
+      style: "currency",
+      currency: "BRL",
+    });
   }
 }
 
-function listarMarca(){
-  let tBody = document.getElementById('tBody');
+function listarConsole() {
+  let tBody = document.getElementById("tBody");
   tBody.innerText = "";
-  const pesqMarca = prompt("Digite a marca: ").toUpperCase();
+  const pesqconsole = prompt("Digite o console: ").toUpperCase();
 
   let contador = 0;
-  for (let i = 0; i < marca.length; i++) {
-    if (marca[i].toUpperCase() == pesqMarca) {
-      
-      let tr = tBody.insertRow()
+  for (let i = 0; i < titulo.length; i++) {
+    if (console[i].toUpperCase() == pesqconsole) {
+      let tr = tBody.insertRow();
 
       let td_id = tr.insertCell();
-      let td_marca = tr.insertCell();
-      let td_modelo = tr.insertCell();
+      let td_titulo = tr.insertCell();
+      let td_console = tr.insertCell();
       let td_preco = tr.insertCell();
-  
-      td_id.innerText = i+1
-      td_marca.innerText = marca[i]
-      td_modelo.innerText = modelo[i]
-      td_preco.innerText = preco[i]
+
+      td_id.innerText = i + 1;
+      td_titulo.innerText = titulo[i];
+      td_console.innerText = console[i];
+      td_preco.innerText = preco[i].toLocaleString("pt-br", {
+        style: "currency",
+        currency: "BRL",
+      });
 
       contador = contador + 1;
     }
   }
 
   if (contador == 0) {
-    alert(`Não foram encontrados produtos da marca "${pesqMarca}"`);
+    alert(`Não foram encontrados jogos para "${pesqconsole}"`);
   }
 }
 
-/* function adicionar() {
-  var prodmarca = document.querySelector('#marca').value;
-  marca.push(prodmarca)
-  var prodmodelo = document.querySelector('#modelo').value;
-  modelo.push(prodmodelo)
-  var prodpreco = document.querySelector('#preco').value;
-  preco.push(prodpreco)
-  alert("Produto cadastrado")
-} */
+function listarPreco() {
+  let tBody = document.getElementById("tBody");
+  tBody.innerText = "";
+  const pesqPreco = Number(prompt("Digite a valor máximo: "));
+
+  let contador = 0;
+  for (let i = 0; i < preco.length; i++) {
+    if (preco[i] <= pesqPreco) {
+      let tr = tBody.insertRow();
+
+      let td_id = tr.insertCell();
+      let td_titulo = tr.insertCell();
+      let td_console = tr.insertCell();
+      let td_preco = tr.insertCell();
+
+      td_id.innerText = i + 1;
+      td_titulo.innerText = titulo[i];
+      td_console.innerText = console[i];
+      td_preco.innerText = preco[i].toLocaleString("pt-br", {
+        style: "currency",
+        currency: "BRL",
+      });
+
+      contador = contador + 1;
+    }
+  }
+
+  if (contador == 0) {
+    alert(
+      `Não foram encontrados jogos com valor máximo de R$ ${pesqPreco.toFixed(
+        2
+      )}`
+    );
+  }
+}
+
+function excluirJogo() {
+  const delJogo = Number(prompt("Informe o ID do jogo a ser excluído? "));
+
+  if (delJogo == "") {
+    return;
+  }
+
+  if (delJogo > titulo.length) {
+    alert("Erro... Jogo não encontrado");
+    return;
+  }
+  // exclui um elemento do vetor
+  const excluido = titulo.splice(delJogo - 1, 1);
+  console.splice(delJogo - 1, 1);
+  preco.splice(delJogo - 1, 1);
+
+  alert(`"${excluido}" excluído com sucesso`);
+  listar();
+}
+
+function estatisticas() {
+  let totalJogos = 0;
+  let totalValor = 0;
+  for (let i = 0; i < titulo.length; i++) {
+    totalJogos++;
+    totalValor = totalValor + preco[i];
+  }
+  if (totalJogos == 0) {
+    alert("Não há jogos em estoque");
+    return;
+  } else {
+    alert(
+      `Há um total de ${totalJogos} jogos em estoque totalizando ${totalValor.toLocaleString(
+        "pt-br",
+        { style: "currency", currency: "BRL" }
+      )}`
+    );
+  }
+}

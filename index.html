@@ -17,14 +17,14 @@
       <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5">
           <div class="container-fluid">
-            <h1 class="navbar-brand mt-1">Estoque</h1>
+            <h1 class="navbar-brand mt-1">BANANA GAMES</h1>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                  <a class="nav-link active" onclick="listar()" aria-current="page" href="#">Listar Jogos</a>
+                  <a class="nav-link" onclick="listar()" aria-current="page" href="#">Listar Jogos</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" onclick="listarConsole()" href="#">Pesquisar por console</a>
@@ -53,13 +53,13 @@
         </div>
         <div class="col-md-4">
           <label for="validationCustom02" class="form-label">Informe o console</label>
-          <input type="text" class="form-control" id="console" placeholder="console">
+          <input type="text" class="form-control" id="console" placeholder="console" required>
         </div>
         <div class="col-md-4">
           <label for="validationCustomUsername" class="form-label">Informe o valor</label>
           <div class="input-group has-validation">
             <span class="input-group-text" id="inputGroupPrepend">R$</span>
-            <input type="text" class="form-control" id="preco">
+            <input type="text" class="form-control" id="preco" required>
           </div>
         </div>
         <div class="col-12 d-flex justify-content-end">

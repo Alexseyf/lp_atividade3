@@ -13,6 +13,8 @@ form.addEventListener("submit", (e) => {
   alert("Produto cadastrado com sucesso!");
   form.reset();
   listar();
+  let inputPrimeiro = document.querySelector("#titulo");
+  inputPrimeiro.focus();
 });
 
 function listar() {
@@ -137,7 +139,7 @@ function estatisticas() {
     return;
   } else {
     alert(
-      `Há um total de ${totalJogos} jogos em estoque totalizando ${totalValor.toLocaleString(
+      `Há ${totalJogos} jogo(s) em estoque totalizando ${totalValor.toLocaleString(
         "pt-br",
         { style: "currency", currency: "BRL" }
       )}`
